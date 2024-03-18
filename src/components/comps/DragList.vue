@@ -2,10 +2,11 @@
     <h1 class="code_list_title">{{ title }}</h1>
     <draggable
     :list="list"
-    class="code_list overflow-y-auto"
+    class="code_list"
     :id="id"
     :group="group"
-    item-key="name">
+    item-key="name"
+    @change="$emit('list_update')">
         <template #item="{element}">
             <div class="code_list_item">{{element.name}}</div>
         </template>
@@ -48,6 +49,8 @@ import Draggable from 'vuedraggable';
         max-width: 60%;
         margin-left: auto;
         margin-right: auto;
+        overflow-y: auto;
+        max-height: 50%;
     }
     .code_list_item{
         position: inherit;
@@ -56,6 +59,7 @@ import Draggable from 'vuedraggable';
         border-color: white;
         border-style: solid;
         font-size: 30px;
+        min-height: 0;
     }
     .code_list_title{
         position: relative;
