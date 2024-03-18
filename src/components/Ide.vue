@@ -104,7 +104,7 @@ import { useTitleStore } from '../store/stores';
                 }
             }
         });
-        clean_code.forEach(code => {
+        clean_code.reverse().forEach(code => {
             code_heap.splice(code,1);
         });
         if(code_heap.length > 0){
@@ -113,14 +113,14 @@ import { useTitleStore } from '../store/stores';
         else{
             error_text.value = '';
         }
-        code_heap = [{code:'', pos:0}];
+        code_heap = [];
     }
 </script>
 
 <style>
     #row_code{
-        margin-left: 20%;
-        margin-right: 20%;
-        height: 50%;
+        margin-left: 0%;
+        margin-right: 0%;
+        height: 70%;
     }
 </style>
