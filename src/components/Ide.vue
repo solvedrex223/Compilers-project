@@ -5,7 +5,7 @@
                 <DragList :id="'syntax_list'" :title = "computed_title" :list="list" :group="syn_group"/>
             </v-col>
             <v-col>
-                <DragList :id="'code_list'" title="Code" :list="list_code" :group="'name'" @list_update="check_code"/>
+                <DragList :id="'code_list'" title="Code" :remove="true" :list="list_code" :group="'name'" @list_update="check_code"/>
             </v-col>
         </v-row>
         <v-row>
@@ -25,10 +25,10 @@ import { useTitleStore } from '../store/stores';
         { name: ";", statement: undefined },
         { name: "begin", statement: undefined },
         { name: "end", statement: undefined },
-        { name: "if(", statement: '' },
-        { name: "else(", statement: '' },
-        { name: "while(", statement: '' },
-        { name: 'main', statement: undefined }
+        { name: "if (", statement: ''},
+        { name: "else {", statement: undefined },
+        { name: "while (", statement: '' },
+        { name: 'main {', statement: undefined }
     ];
     const var_list = [
         { name: "int", statement: '' },
@@ -121,6 +121,6 @@ import { useTitleStore } from '../store/stores';
     #row_code{
         margin-left: 0%;
         margin-right: 0%;
-        height: 70%;
+        height: 50%;
     }
 </style>
