@@ -79,9 +79,9 @@ import Draggable from "vuedraggable";
     });
 
     const int_rules = [(v) => /^[0-9]+$/gm.test(v) || "Value must be an integer"];
-    const string_rules = [(v) => /.+/gm.test(v) || "Value must be a number"];
-    const float_rules = [(v) => /^\d+(\.\d+)?$/.test(v) || "Value must be a string"];
-    const comparison_rules = [(v) => /^.+([><]|(==)|(!=))\s*\w+$/.test(v) || "Invalid comparison"];
+    const string_rules = [(v) => /.+/gm.test(v) || "Value must be a string"];
+    const float_rules = [(v) => /^\d+(\.\d+)?$/.test(v) || "Value must be a number"];
+    const comparison_rules = [(v) => /^.+\s+([><]|(==)|(!=)|(>=)|(<=))\s+\w+$/.test(v) || "Invalid comparison"];
 
     function getTest(name: string) {
         switch (name) {
