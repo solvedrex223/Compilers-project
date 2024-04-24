@@ -28,6 +28,7 @@ import { useTitleStore } from '../../store/stores';
         {title: 'Variables', value: 'variables'},
         {title: 'Syntax', value: 'syntax'},
         {title: 'Classes', value: 'classes'},
+        {title: 'Functions', value: 'functions'}
     ];
     function setTitle(title:string) {
         title_store.title = title;

@@ -108,6 +108,8 @@ import Draggable from "vuedraggable";
             case "new":
             case "class":
                 return "{";
+            case "print(":
+                return ");"
             default:
                 return "){";
         }

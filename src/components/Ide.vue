@@ -11,6 +11,17 @@
         <v-row>
             <ErrorBox :text="error_text"></ErrorBox>
         </v-row>
+        <v-row>
+            <div>Compilation Messages</div>
+        </v-row>
+        <v-row>
+            <v-text-field
+            readonly
+            disabled
+            >
+            {{ comp_message }}
+            </v-text-field>
+        </v-row>
     </v-container>
 </template>
 <script setup lang="ts">
@@ -39,12 +50,16 @@ import { useTitleStore } from '../store/stores';
         { name: 'new', statement: ''},
         { name: 'class', statement: ''}
     ];
+    const function_list = [
+    { name: 'print(', statement: '' }
+    ];
     const default_code = [{name: 'begin', statement: undefined}, {name: 'end', statement: undefined}];
     const syn_group = { name: 'name', pull: 'clone', put: false };
     const {computed_title,title} = storeToRefs(useTitleStore());
-    const list = ref([...syntax_list, ...class_list, ...var_list]);
+    const list = ref([...syntax_list, ...class_list, ...var_list, ...function_list]);
     const list_code = ref(default_code);
     const error_text = ref('');
+    const comp_message = ref('Test');
     class Code {
         code:string = '';
         pos:number = 0;
@@ -62,6 +77,12 @@ import { useTitleStore } from '../store/stores';
                 break;
             case 'variables':
                 list.value = var_list;
+                break;
+            case 'classes':
+                list.value = class_list;
+                break;
+            case 'functions':
+                list.value = function_list;
                 break;
         }
     });
