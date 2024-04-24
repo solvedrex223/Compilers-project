@@ -9,7 +9,7 @@
                         <v-sheet class="code_text">{{ element.name }}</v-sheet>
                     </v-col>
                     <v-col cols="6">
-                        <v-text-field class="form-control" label="Code" :rules="getTest(element.name)" :disabled="!remove" clearable />
+                        <v-text-field class="form-control" label="Code" :rules="getTest(element.name)" :disabled="!remove" clearable v-model="element.statement" />
                     </v-col>
                     <v-col cols="1">
                         <v-sheet class="code_text">{{ getText(element.name) }}</v-sheet>
@@ -26,13 +26,13 @@
                         <v-sheet class="code_text">{{ element.name }}</v-sheet>
                     </v-col>
                     <v-col cols="3">
-                        <v-text-field class="form-control" label="Name" :rules="string_rules" :disabled="!remove" clearable />
+                        <v-text-field class="form-control" label="Name" :rules="string_rules" :disabled="!remove" clearable v-model="element.var"/>
                     </v-col>
                     <v-col cols="1">
                         <v-sheet class="code_text">=</v-sheet>
                     </v-col>
                     <v-col cols="4">
-                        <v-text-field class="form-control" label="Code" :rules="getTest(element.name)" :disabled="!remove" clearable />
+                        <v-text-field class="form-control" label="Code" :rules="getTest(element.name)" :disabled="!remove" clearable v-model="element.statement"/>
                     </v-col>
                     <v-col cols="1">
                         <v-sheet class="code_text">{{ getText(element.name) }}</v-sheet>
@@ -54,20 +54,13 @@ import Draggable from "vuedraggable";
     defineComponent({
         Draggable,
     });
+    const list = defineModel();
+    
     defineProps({
         id: String,
         title: {
             default: "All",
             type: String,
-        },
-        list: {
-            default() {
-                return [
-                    { name: "begin", statement: undefined },
-                    { name: "end", statement: undefined },
-                ];
-            },
-            type: Array,
         },
         group: {},
         remove: {

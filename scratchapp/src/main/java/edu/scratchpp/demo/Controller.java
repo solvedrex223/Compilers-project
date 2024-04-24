@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,8 @@ import jodd.io.StreamGobbler;
 @RestController
 public class Controller {
 
-    @PostMapping("/compile")
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = "/compile", produces = MediaType.TEXT_PLAIN_VALUE)
     public String compileCode(@RequestBody String code) {
         try {
             File out_file = new File("Code.java");
